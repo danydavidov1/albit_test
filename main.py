@@ -1,13 +1,14 @@
 from flask import Flask
-from tools.docker_api import get_all_containers
+import docker
+
+client = docker.from_env()
 
 app = Flask(__name__)
 
 @app.route('/container_list', methods=["GET"])
 def get_containers():
-    container_list = get_all_containers()
-
-    return(str(container_list))
+    containers = client.containers.list()
+    return (str(len(containers)))
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(host='0.0.0.0', port=5000, debug = True)
