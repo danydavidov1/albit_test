@@ -3,3 +3,5 @@ echo "${req}"
 re='^[0-9]+$'
 if ! [[ $req =~ $re ]] ; then echo "error: Not a number" >&2;
 fi
+echo "${req}"
+echo "${re}"
