@@ -1,4 +1,7 @@
 job('build and pull nginx') {
+  triggers {
+        upstream('clone to repo and build image', 'SUCCESS')
+    }
     steps {
         copyArtifacts('pull from repo') {
             includePatterns('nginx/Dockerfile, nginx/default.conf')
