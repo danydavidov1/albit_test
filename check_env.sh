@@ -1,3 +1,4 @@
+#!/bin/bash
 get=$(curl -s -X GET http://localhost/container_list -H "Accept: application/json")
 echo "${get}"
 num='^[0-9]+$'
