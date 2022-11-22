@@ -15,7 +15,7 @@ job('RunAndTestEnvironment') {
                 }
         }
         shell {
-            command(./check_env.sh)
+            command("./check_env.sh")
         }
         dockerComposeBuilder {
             useCustomDockerComposeFile(true)
