@@ -10,7 +10,7 @@ job('build and pull nginx') {
         dockerBuildAndPublish {
             repositoryName('danielavidov/nginx-test-daniel-new')
             tag('nginx_proxy')
-            DockerfilePath('./nginx/Dockefile')
+            dockerfileDirectory('./nginx/Dockerfile')
             registryCredentials('docker-hub-daniel')
             forcePull(false)
             forceTag(false)
@@ -19,4 +19,3 @@ job('build and pull nginx') {
         }
     }
 }
-

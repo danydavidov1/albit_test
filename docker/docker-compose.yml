@@ -2,14 +2,14 @@ version: "3.9"
 
 services:
   flask_app:
-    image: flask_test:latest
+    image: danielavidov/nginx-test-daniel-new:flask_app
     volumes:
      -  /var/run/docker.sock:/var/run/docker.sock
     networks:
       - albit_test
 
   nginx_revers_proxy:
-    image: nginx_test:latest
+    image: danielavidov/nginx-test-daniel-new:nginx_proxy
     ports: 
       - 80:80
     networks:
