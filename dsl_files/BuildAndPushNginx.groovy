@@ -1,16 +1,17 @@
 job('build and pull nginx') {
-    scm {
-        git {
-            remote {
-                github('danydavidov1/albit_test', 'https')
+    steps {
+        copyArtifacts('pull from repo') {
+            includePatterns('nginx/Dockerfile, nginx/default.conf')
+            targetDirectory('.')
+            flatten()
+            optional()
+            buildSelector {
+            	workspace()
             }
         }
-    }
-    steps {
         dockerBuildAndPublish {
             repositoryName('danielavidov/nginx-test-daniel-new')
             tag('nginx_proxy')
-            dockerfileDirectory('./nginx/Dockerfile')
             registryCredentials('docker-hub-daniel')
             forcePull(false)
             forceTag(false)

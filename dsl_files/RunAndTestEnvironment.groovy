@@ -1,4 +1,7 @@
 job('RunAndTestEnvironment') {
+  triggers {
+        upstream('build and pull nginx', 'SUCCESS')
+    }
     steps {
       	copyArtifacts('pull from repo') {
             includePatterns('check_env.sh, docker/docker-compose.yml')
