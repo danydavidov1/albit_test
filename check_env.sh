@@ -2,5 +2,5 @@ req=$(curl -s -X GET http://localhost/container_list -H "Accept: application/jso
 echo "${req}"
 re='^[0-9]+$' 
 if ! [[ $req =~ $re ]] ; then                                                      
-   echo "error: Not a number" >&2; exit 1
+   echo "error: Not a number" >&2;
 fi
