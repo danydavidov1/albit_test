@@ -1,15 +1,17 @@
 job('RunAndTestEnvironment') {
-    scm {
-        git {
-            remote {
-                github('danydavidov1/albit_test', 'https')
+    steps {
+      	copyArtifacts('pull from repo') {
+            includePatterns('check_env.sh, docker/docker-compose.yml')
+            targetDirectory('.')
+            flatten()
+            optional()
+            buildSelector {
+            	workspace()
             }
         }
-    }
-    steps {
         dockerComposeBuilder {
             useCustomDockerComposeFile(true)
-            dockerComposeFile("./docker/docker-compose.yml")
+            dockerComposeFile('docker-compose.yml')
             option {
                 startAllServices()
                 }
@@ -19,7 +21,7 @@ job('RunAndTestEnvironment') {
         }
         dockerComposeBuilder {
             useCustomDockerComposeFile(true)
-            dockerComposeFile("./docker/docker-compose.yml")
+            dockerComposeFile("docker-compose.yml")
             option {
                 stopAllServices()
                 }
