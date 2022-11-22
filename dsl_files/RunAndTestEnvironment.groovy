@@ -13,6 +13,16 @@ job('RunAndTestEnvironment') {
             option {
                 startAllServices()
                 }
-        }        
+        }
+        shell {
+            command(./check_env.sh)
+        }
+        dockerComposeBuilder {
+            useCustomDockerComposeFile(true)
+            dockerComposeFile("./docker/docker-compose.yml")
+            option {
+                stopAllServices()
+                }
+        }         
     }
 }
