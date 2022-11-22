@@ -1,0 +1,2 @@
+req=$(curl -s -X GET http://localhost/container_list -H "Accept: application/json")
+echo "${req}"
